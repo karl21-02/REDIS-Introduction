@@ -9,13 +9,23 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
 dependencies {
+    implementation 'redis.clients:jedis:4.3.1'
+
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+
+    implementation 'ch.qos.logback:logback-classic:1.5.16'
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-
-    implementation 'redis.clients:jedis:5.2.0'
-
 }
+
 
 test {
     useJUnitPlatform()
